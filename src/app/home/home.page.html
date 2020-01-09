@@ -1,14 +1,34 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            MOVIS rocks!
+        </ion-title>
+
+        <ion-buttons slot="end">
+            <ion-button (click)="onBeerClicked()">
+                <ion-icon name="beer" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+    <ion-card *ngFor="let card of cardsData">
+        <img src="../../assets/shapes.svg" alt="SVG image">
+
+        <ion-card-header>
+            <ion-card-title>{{card.title}}</ion-card-title>
+            <ion-card-subtitle>{{card.subtitle}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+            <div>{{card.contentText}}</div>
+            <div>
+                <ion-buttons class="ion-justify-content-end">
+                    <ion-button (click)="openAlert()">Alerta</ion-button>
+                </ion-buttons>
+            </div>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
