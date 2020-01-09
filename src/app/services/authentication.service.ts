@@ -1,0 +1,15 @@
+import {Injectable} from '@angular/core';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class AuthenticationService {
+
+    constructor() {
+    }
+
+    isAuthenticated(): boolean {
+        // TODO: Esto es temporal!
+        return true;
+    }
+}
