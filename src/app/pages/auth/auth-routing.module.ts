@@ -8,8 +8,9 @@ const routes: Routes = [
         path: '',
         component: AuthPage,
         children: [
-            {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-            {path: 'dashboard', loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardPageModule)}
+            {path: '', redirectTo: 'cars-list', pathMatch: 'full'},
+            {path: 'dashboard', loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardPageModule)},
+            {path: 'cars-list', loadChildren: () => import('../cars-list/cars-list.module').then(m => m.CarsListPageModule)}
         ]
     }
 ];

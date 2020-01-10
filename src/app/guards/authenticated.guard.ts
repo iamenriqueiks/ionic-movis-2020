@@ -12,13 +12,15 @@ export class AuthenticatedGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot,
-                state: RouterStateSnapshot): boolean {
-        const isAuthenticated = this.authenticationService.isAuthenticated();
-        if (isAuthenticated) {
-            return true;
-        }
+                state: RouterStateSnapshot): Promise<boolean> {
+        return this.authenticationService.isAuthenticated().then(isAuthenticated => {
+            if (isAuthenticated) {
+                return true;
+            }
 
-        this.router.navigate(['public']);
-        return false;
+            this.router.navigate(['public']);
+            return false;
+        });
+
     }
 }

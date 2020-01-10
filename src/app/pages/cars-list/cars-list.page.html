@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>cars-list</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="onLogOut()">
+                <ion-icon name="exit" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card *ngFor="let car of carsToDisplay">
+        <img src="https://s3.amazonaws.com/stg01maxiaublica/uploads/2018/12/253/168796/chevrolet-beat-2018-5p_ls_l4_1.2_man-mp2617711_181228005228-A.jpeg"
+             alt="">
+        <ion-card-header>
+            <ion-card-title>{{car.make}} {{car.model}} {{car.year}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, repellendus, suscipit? Consectetur culpa
+            facere modi quas quasi sunt vero. Architecto dolorem doloremque doloribus ducimus eius, iusto maiores odit
+            quaerat tempora?
+        </ion-card-content>
+    </ion-card>
+</ion-content>

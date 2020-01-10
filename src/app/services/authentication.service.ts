@@ -4,25 +4,27 @@ import {Injectable} from '@angular/core';
     providedIn: 'root'
 })
 export class AuthenticationService {
-
-    private _currentUser;
-
     constructor() {
     }
 
-    isAuthenticated(): boolean {
-        // TODO: Esto es temporal!
-        return !!this._currentUser;
+    isAuthenticated(): Promise<boolean> {
+        return Backendless.UserService.isValidLogin();
     }
 
-    get currentUser() {
-        return this._currentUser;
+    getCurrentUser(): Promise<Backendless.User> {
+        return Backendless.UserService.getCurrentUser();
     }
 
     logIn(email: string, password: string): Promise<boolean> {
-        return new Promise(resolve => {
-            this._currentUser = {email: 'enrique@iknesoft.com', name: 'Enrique Diaz R.'};
-            setTimeout(resolve, 100, true);
-        });
+        return Backendless.UserService.login(email, password, true)
+            .then((loggedInUser) => {
+                return true;
+            }).catch((error) => {
+                return false;
+            });
+    }
+
+    logOut(): Promise<void> {
+        return Backendless.UserService.logout();
     }
 }
